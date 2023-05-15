@@ -15,7 +15,6 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
-import org.bouncycastle.crypto.generators.PKCS5S2ParametersGenerator;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.util.encoders.Base64;
@@ -23,7 +22,7 @@ import org.bouncycastle.util.encoders.Base64;
 public class CryptoUtils extends AsyncTask<String, Void, String> {
 
     private static final int SALT_SIZE_BYTES = 8;
-    private static final int ITERATIONS = 100;
+    private static final int ITERATIONS = 1;
     private static final int KEY_SIZE_BYTES = 16;
     private static final int IV_SIZE_BYTES = 16;
 
