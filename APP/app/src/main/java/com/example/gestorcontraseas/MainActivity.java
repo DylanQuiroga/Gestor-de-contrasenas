@@ -12,7 +12,7 @@ import android.widget.Button;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    String LLAVE = "ASfnHF56RACTERFDQUIO1239";
+    String LLAVE = "H&Ur@i94^";
 
     private static final int ENCRYPT = 1;
     private static final int DECRYPT = 2;
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String texto = "Hola cabrones jejeje";
+                String texto = "Hola mundo";
                 String st1 = null;
                 String st2 = null;
 
