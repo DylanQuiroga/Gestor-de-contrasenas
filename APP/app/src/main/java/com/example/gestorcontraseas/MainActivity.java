@@ -62,7 +62,8 @@ public class MainActivity extends AppCompatActivity {
         for(String record : records) System.out.println(record);
     }
 
-    private void ingresarDatos(String tc, String st, String ce, String cn, String nu, String rut, String cel, String tf, String ns, String as, String cs, String dr, String o1, String o2, String o3, SQLiteDatabase DB){
+
+    public void ingresarDatos(String tc, String st, String ce, String cn, String nu, String rut, String cel, String tf, String ns, String as, String cs, String dr, String o1, String o2, String o3, SQLiteDatabase DB){
         ContentValues values = new ContentValues();
         values.put("TipoCuenta", tc);
         values.put("sitio", st);
