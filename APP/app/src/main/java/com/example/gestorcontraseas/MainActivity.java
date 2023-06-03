@@ -12,11 +12,6 @@ import android.widget.Button;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    String LLAVE = "ASfnHF56RACTERFDQUIO1239";
-
-    private static final int ENCRYPT = 1;
-    private static final int DECRYPT = 2;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,13 +26,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String texto = "Hola cabrones jejeje";
+                String texto1 = "111011111000000110011000011110011011111100010111010100101011010110101";
                 String st1 = null;
                 String st2 = null;
 
                 try {
-                    st1 = CryptoUtils.encrypt(texto,LLAVE);
+                    st1 = Huffman.compress(texto);
                     Log.d("MainActivity", st1);
-                    st2 = CryptoUtils.decrypt(st1,LLAVE);
+                    st2 = Huffman.decompress(texto1);
                     Log.d("MainActivity", st2);
                 } catch (Exception e) {
                     throw new RuntimeException(e);
