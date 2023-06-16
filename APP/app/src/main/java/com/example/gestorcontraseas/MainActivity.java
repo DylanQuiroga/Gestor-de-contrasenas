@@ -3,6 +3,7 @@ package com.example.gestorcontraseas;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,20 +26,7 @@ public class MainActivity extends AppCompatActivity {
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String texto = "Hola cabrones jejeje";
-                String texto1 = "111011111000000110011000011110011011111100010111010100101011010110101";
-                String st1 = null;
-                String st2 = null;
-
-                try {
-                    st1 = Huffman.compress(texto);
-                    Log.d("MainActivity", st1);
-                    st2 = Huffman.decompress(texto1);
-                    Log.d("MainActivity", st2);
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
-
+                test(view);
                 /*values.put("tipoCuenta", 1);
                 values.put("sitio", "steam.com");
                 values.put("correo", "teamcompleto123@gmail.com");
@@ -58,7 +46,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void imprimirDB(List<String> records){
+    public void test(View view) {
+        Intent intent = new Intent(this, AgregarCuenta.class);
+        startActivity(intent);
+    }
+
+    /*private void imprimirDB(List<String> records){
         for(String record : records) System.out.println(record);
     }
 
@@ -82,5 +75,5 @@ public class MainActivity extends AppCompatActivity {
         values.put("otro3",o3);
         DB.insert("my_table", null, values);
     }
-
+*/
 }
