@@ -20,7 +20,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     }
 
     public void onCreate(SQLiteDatabase db) {
-        String createTable = "CREATE TABLE my_table (id INTEGER PRIMARY KEY AUTOINCREMENT, tipoCuenta TEXT, sitio TEXT, correo TEXT, contra TEXT, nombreUsuario TEXT, rut TEXT, celular TEXT, telefonoFijo TEXT, nombres TEXT, apellidos TEXT, correoSecundario TEXT, direccion TEXT, otro1 TEXT, otro2 TEXT, otro3 TEXT)";
+        String createTable = "CREATE TABLE my_table (id INTEGER PRIMARY KEY AUTOINCREMENT, tipoCuenta TEXT, sitio TEXT, correo TEXT, contra TEXT, rut TEXT, celular TEXT, telefonoFijo TEXT, nombres TEXT, apellidos TEXT, correoSecundario TEXT, direccion TEXT, otro1 TEXT, otro2 TEXT, otro3 TEXT, codigo TEXT)";
         db.execSQL(createTable);
     }
 
@@ -43,7 +43,6 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                 @SuppressLint("Range") String sitio = cursor.getString(cursor.getColumnIndex("sitio"));
                 @SuppressLint("Range") String correo = cursor.getString(cursor.getColumnIndex("correo"));
                 @SuppressLint("Range") String contra = cursor.getString(cursor.getColumnIndex("contra"));
-                @SuppressLint("Range") String nombreUsuario = cursor.getString(cursor.getColumnIndex("nombreUsuario"));
                 @SuppressLint("Range") String rut = cursor.getString(cursor.getColumnIndex("rut"));
                 @SuppressLint("Range") String celular = cursor.getString(cursor.getColumnIndex("celular"));
                 @SuppressLint("Range") String telefonoFijo = cursor.getString(cursor.getColumnIndex("telefonoFijo"));
@@ -54,8 +53,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                 @SuppressLint("Range") String otro1 = cursor.getString(cursor.getColumnIndex("otro1"));
                 @SuppressLint("Range") String otro2 = cursor.getString(cursor.getColumnIndex("otro2"));
                 @SuppressLint("Range") String otro3 = cursor.getString(cursor.getColumnIndex("otro3"));
+                @SuppressLint("Range") String codigo = cursor.getString(cursor.getColumnIndex("codigo"));
 
-                String record = "ID: " + id + " | Tipo de cuenta: " + tipoCuenta + " | Sitio: " + sitio + " | Correo: " + correo + " | Contraseña: " + contra + " | Usuario: " + nombreUsuario + " | Rut: " + rut + " | Celular: " + celular + " | Teléfono fijo: " + telefonoFijo + " | Nombres: " + nombres + " | Apellidos: " + apellidos + " | Correo secundario: " + correoSecundario + " | Dirección: " + direccion + " | Otro 1: " + otro1 + " | Otro 2: " + otro2 + " | Otro 3: " + otro3;
+                String record = "ID: " + id + " | Tipo de cuenta: " + tipoCuenta + " | Sitio: " + sitio + " | Correo: " + correo + " | Contraseña: " + contra + " | Rut: " + rut + " | Celular: " + celular + " | Teléfono fijo: " + telefonoFijo + " | Nombres: " + nombres + " | Apellidos: " + apellidos + " | Correo secundario: " + correoSecundario + " | Dirección: " + direccion + " | Otro 1: " + otro1 + " | Otro 2: " + otro2 + " | Otro 3: " + otro3 + " | Codigo: " + codigo;
                 records.add(record);
             } while (cursor.moveToNext());
         }
