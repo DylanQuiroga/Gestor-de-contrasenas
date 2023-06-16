@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".AgregarCuenta">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/whiteColor"
@@ -44,7 +43,7 @@
                         android:layout_weight="0.6"
                         android:gravity="center_vertical"
                         android:paddingLeft="10dp"
-                        android:text="Tipo de cuenta"
+                        android:text="Tipo de cuenta *"
                         android:textColor="@color/blackColor" />
 
                     <EditText
@@ -114,7 +113,7 @@
                         android:layout_weight="0.6"
                         android:gravity="center_vertical"
                         android:paddingLeft="10dp"
-                        android:text="Correo electronico"
+                        android:text="Correo electronico *"
                         android:textColor="@color/blackColor" />
 
                     <EditText
@@ -149,7 +148,7 @@
                         android:layout_weight="0.6"
                         android:gravity="center_vertical"
                         android:paddingLeft="10dp"
-                        android:text="Contraseña"
+                        android:text="Contraseña *"
                         android:textColor="@color/blackColor" />
 
                     <EditText
@@ -511,6 +510,27 @@
                         android:paddingLeft="10dp"
                         android:singleLine="true"
                         android:textColor="@color/blackColor" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/FifteenLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- place one TextView and one EditText inside layout using weight property -->
+
+                    <TextView
+                        android:layout_width="252dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="0.6"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:text="* estos datos son obligatorios"
+                        android:textColor="@color/redColor" />
                 </LinearLayout>
 
                 <Button

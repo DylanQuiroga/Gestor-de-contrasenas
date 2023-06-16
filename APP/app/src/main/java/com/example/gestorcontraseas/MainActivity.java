@@ -26,11 +26,6 @@ public class MainActivity extends AppCompatActivity {
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                String st3 = "1110110011110111111101010010010010010010010010";
-
-                System.out.println(Huffman.decompress(st3));
-
                 test(view);
             }
         });

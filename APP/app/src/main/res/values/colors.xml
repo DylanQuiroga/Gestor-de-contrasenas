@@ -11,4 +11,5 @@
     <color name="blackColor">#000</color>
     <color name="editTextBack">#f2f2f2</color>
     <color name="greenColor">#0f0</color>
+    <color name="redColor">#F44336</color>
 </resources>

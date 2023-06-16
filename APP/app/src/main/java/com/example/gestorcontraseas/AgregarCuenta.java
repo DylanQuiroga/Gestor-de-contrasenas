@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.List;
 
 public class AgregarCuenta extends AppCompatActivity {
@@ -41,6 +43,9 @@ public class AgregarCuenta extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("ALERTA").setMessage("Hay algunos cuadros sin información. ¿Desea continuar?");
 
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        builder1.setTitle("ALERTA").setMessage("Rellena por lo menos los campos importantes");
+
         agregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,12 +64,24 @@ public class AgregarCuenta extends AppCompatActivity {
                 String otro2 = otro2ET.getText().toString();
                 String otro3 = otro3ET.getText().toString();
 
-                if (tipoCuenta.isEmpty() || sitio.isEmpty() || correo.isEmpty() || contra.isEmpty() || rut.isEmpty() || celular.isEmpty() || telefonoFijo.isEmpty() || nombres.isEmpty() || apellidos.isEmpty() || correoSecundario.isEmpty() || direccion.isEmpty() || otro1.isEmpty() || otro2.isEmpty() || otro3.isEmpty()){
+                if(correo.isEmpty() || tipoCuenta.isEmpty() || contra.isEmpty()){
+                    builder1.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    });
+
+                    AlertDialog dialog = builder1.create();
+                    dialog.show();
+
+                }else if (rut.isEmpty() || celular.isEmpty() || telefonoFijo.isEmpty() || nombres.isEmpty() || apellidos.isEmpty() || correoSecundario.isEmpty() || direccion.isEmpty() || otro1.isEmpty() || otro2.isEmpty() || otro3.isEmpty()){
                     builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             ingresarDatosALaDB(tipoCuenta, sitio, correo, contra, rut, celular, telefonoFijo, nombres, apellidos, correoSecundario, direccion, otro1, otro2, otro3);
-
+                            Snackbar mySnackbar = Snackbar.make(view, "Cuenta ingresada correctamente", 3000);
+                            mySnackbar.show();
                         }
                     });
 
@@ -80,6 +97,8 @@ public class AgregarCuenta extends AppCompatActivity {
 
                 }else {
                     ingresarDatosALaDB(tipoCuenta, sitio, correo, contra, rut, celular, telefonoFijo, nombres, apellidos, correoSecundario, direccion, otro1, otro2, otro3);
+                    Snackbar mySnackbar = Snackbar.make(view, "Cuenta ingresada correctamente", 3000);
+                    mySnackbar.show();
                 }
 
             }
