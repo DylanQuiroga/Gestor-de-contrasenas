@@ -9,7 +9,7 @@ import javax.crypto.spec.SecretKeySpec;
 public class PasswordEncryption {
     private static final String TAG = "PasswordEncryption";
     private static final String ALGORITHM = "AES";
-    private static final String KEY = "MySecretKey12345"; // Clave de encriptación (16, 24 o 32 bytes)
+    private static final String KEY = "Kekers230115nuat"; // Clave de encriptación (16, 24 o 32 bytes)
 
     public static String encrypt(String password) {
         try {

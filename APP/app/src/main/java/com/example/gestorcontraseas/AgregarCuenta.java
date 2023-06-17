@@ -112,7 +112,7 @@ public class AgregarCuenta extends AppCompatActivity {
         ContentValues values = new ContentValues();
 
         String code = PasswordEncryption.encrypt(contra);
-        String contraHuffman = Huffman.compress(contra);
+        String contraHuffman = Huffman.encode(contra);
 
         values.put("TipoCuenta", tipoCuenta);
         values.put("sitio", sitio);
@@ -136,6 +136,13 @@ public class AgregarCuenta extends AppCompatActivity {
         for(String record : records){
             System.out.println(record);
         }
+
+        /*String st0 = PasswordEncryption.decrypt("xEr93JAll71TVEa3Kfewgw==");
+        HuffmanNode root = Huffman.buildHuffmanTree(Huffman.getFrequencies(st0));
+        String st2 = Huffman.decode("01010111001110011100", root);
+
+        System.out.println(st0);
+        System.out.println(st2);*/
     }
 
 }
