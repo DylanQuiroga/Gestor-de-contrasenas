@@ -2,20 +2,19 @@ package com.example.gestorcontraseas;
 import java.util.*;
 
 class HuffmanNode implements Comparable<HuffmanNode> {
-    char character;
     int frequency;
-    HuffmanNode leftChild;
-    HuffmanNode rightChild;
+    char data;
+    HuffmanNode left, right;
 
-    public HuffmanNode(char character, int frequency, HuffmanNode leftChild, HuffmanNode rightChild) {
-        this.character = character;
+    public HuffmanNode(int frequency, char data, HuffmanNode left, HuffmanNode right) {
         this.frequency = frequency;
-        this.leftChild = leftChild;
-        this.rightChild = rightChild;
+        this.data = data;
+        this.left = left;
+        this.right = right;
     }
 
     public boolean isLeaf() {
-        return leftChild == null && rightChild == null;
+        return left == null && right == null;
     }
 
     @Override
@@ -25,71 +24,76 @@ class HuffmanNode implements Comparable<HuffmanNode> {
 }
 
 public class Huffman {
-    private static Map<Character, String> charToCode = new HashMap<>();
-    private static Map<String, Character> codeToChar = new HashMap<>();
+    private static final int ASCII_SIZE = 128;
 
-    public static String compress(String message) {
-        Map<Character, Integer> frequencyMap = buildFrequencyMap(message);
-        HuffmanNode root = buildHuffmanTree(frequencyMap);
-        buildCodeMaps(root, "");
+    public static String encode(String text) {
+        int[] frequencies = getFrequencies(text);
+        HuffmanNode root = buildHuffmanTree(frequencies);
+        Map<Character, String> codes = generateCodes(root);
 
-        StringBuilder encodedMessage = new StringBuilder();
-        for (char c : message.toCharArray()) {
-            encodedMessage.append(charToCode.get(c));
+        StringBuilder encodedText = new StringBuilder();
+        for (char c : text.toCharArray()) {
+            encodedText.append(codes.get(c));
         }
-
-        return encodedMessage.toString();
+        return encodedText.toString();
     }
 
-    public static String decompress(String encodedMessage) {
-        StringBuilder decodedMessage = new StringBuilder();
-        StringBuilder code = new StringBuilder();
+    public static String decode(String encodedText, HuffmanNode root) {
+        StringBuilder decodedText = new StringBuilder();
+        HuffmanNode current = root;
+        for (char c : encodedText.toCharArray()) {
+            if (c == '0') {
+                current = current.left;
+            } else if (c == '1') {
+                current = current.right;
+            }
 
-        for (char c : encodedMessage.toCharArray()) {
-            code.append(c);
-            if (codeToChar.containsKey(code.toString())) {
-                decodedMessage.append(codeToChar.get(code.toString()));
-                code.setLength(0);
+            if (current.isLeaf()) {
+                decodedText.append(current.data);
+                current = root;
+            }
+        }
+        return decodedText.toString();
+    }
+
+    public static int[] getFrequencies(String text) {
+        int[] frequencies = new int[ASCII_SIZE];
+        for (char c : text.toCharArray()) {
+            frequencies[c]++;
+        }
+        return frequencies;
+    }
+
+    public static HuffmanNode buildHuffmanTree(int[] frequencies) {
+        PriorityQueue<HuffmanNode> queue = new PriorityQueue<>();
+        for (char c = 0; c < ASCII_SIZE; c++) {
+            if (frequencies[c] > 0) {
+                queue.offer(new HuffmanNode(frequencies[c], c, null, null));
             }
         }
 
-        return decodedMessage.toString();
-    }
-
-    private static Map<Character, Integer> buildFrequencyMap(String message) {
-        Map<Character, Integer> frequencyMap = new HashMap<>();
-        for (char c : message.toCharArray()) {
-            frequencyMap.put(c, frequencyMap.getOrDefault(c, 0) + 1);
-        }
-        return frequencyMap;
-    }
-
-    private static HuffmanNode buildHuffmanTree(Map<Character, Integer> frequencyMap) {
-        PriorityQueue<HuffmanNode> pq = new PriorityQueue<>();
-
-        for (char c : frequencyMap.keySet()) {
-            pq.offer(new HuffmanNode(c, frequencyMap.get(c), null, null));
+        while (queue.size() > 1) {
+            HuffmanNode left = queue.poll();
+            HuffmanNode right = queue.poll();
+            HuffmanNode parent = new HuffmanNode(left.frequency + right.frequency, '\0', left, right);
+            queue.offer(parent);
         }
 
-        while (pq.size() > 1) {
-            HuffmanNode leftChild = pq.poll();
-            HuffmanNode rightChild = pq.poll();
-
-            HuffmanNode parent = new HuffmanNode('\0', leftChild.frequency + rightChild.frequency, leftChild, rightChild);
-            pq.offer(parent);
-        }
-
-        return pq.poll();
+        return queue.peek();
     }
 
-    private static void buildCodeMaps(HuffmanNode node, String code) {
+    private static Map<Character, String> generateCodes(HuffmanNode root) {
+        Map<Character, String> codes = new HashMap<>();
+        generateCodesHelper(root, "", codes);
+        return codes;
+    }
+
+    private static void generateCodesHelper(HuffmanNode node, String code, Map<Character, String> codes) {
         if (node.isLeaf()) {
-            charToCode.put(node.character, code);
-            codeToChar.put(code, node.character);
-            return;
+            codes.put(node.data, code);
+        } else {
+            generateCodesHelper(node.left, code + '0', codes);
+            generateCodesHelper(node.right, code + '1', codes);
         }
-
-        buildCodeMaps(node.leftChild, code + "0");
-        buildCodeMaps(node.rightChild, code + "1");
     }
 }

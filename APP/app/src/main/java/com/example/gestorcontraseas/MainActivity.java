@@ -3,6 +3,7 @@ package com.example.gestorcontraseas;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,62 +26,13 @@ public class MainActivity extends AppCompatActivity {
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String texto = "Hola cabrones jejeje";
-                String texto1 = "111011111000000110011000011110011011111100010111010100101011010110101";
-                String st1 = null;
-                String st2 = null;
-
-                try {
-                    st1 = Huffman.compress(texto);
-                    Log.d("MainActivity", st1);
-                    st2 = Huffman.decompress(texto1);
-                    Log.d("MainActivity", st2);
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
-
-                /*values.put("tipoCuenta", 1);
-                values.put("sitio", "steam.com");
-                values.put("correo", "teamcompleto123@gmail.com");
-                values.put("contra", "123456789");
-                values.put("nombreUsuario", "DeadCell");
-                values.put("rut", "12.345.678-9");
-                values.put("celular","+56912345678");
-
-                db.insert("my_table",null,values);
-
-                List<String> records = dbHelper.getAllRecords();
-
-                for(String record : records){
-                    System.out.println(record);
-                }*/
+                test(view);
             }
         });
     }
 
-    private void imprimirDB(List<String> records){
-        for(String record : records) System.out.println(record);
+    public void test(View view) {
+        Intent intent = new Intent(this, AgregarCuenta.class);
+        startActivity(intent);
     }
-
-
-    public void ingresarDatos(String tc, String st, String ce, String cn, String nu, String rut, String cel, String tf, String ns, String as, String cs, String dr, String o1, String o2, String o3, SQLiteDatabase DB){
-        ContentValues values = new ContentValues();
-        values.put("TipoCuenta", tc);
-        values.put("sitio", st);
-        values.put("correo", ce);
-        values.put("contra", cn);
-        values.put("nombreUsuario", nu);
-        values.put("rut", rut);
-        values.put("celular",cel);
-        values.put("telefonoFijo", tf);
-        values.put("nombres", ns);
-        values.put("apellidos", as);
-        values.put("correoSecundario", cs);
-        values.put("direccion", dr);
-        values.put("otro1",o1);
-        values.put("otro2",o2);
-        values.put("otro3",o3);
-        DB.insert("my_table", null, values);
-    }
-
 }
