@@ -110,7 +110,7 @@ public class PinLogin extends AppCompatActivity implements View.OnClickListener 
     }
 
     private void passNumber(ArrayList<String> numbers_list) {
-        if(numbers_list == null){
+        if(numbers_list.size() == 0){
             view_01.setBackgroundResource(R.drawable.bg_view_grey_oval);
             view_02.setBackgroundResource(R.drawable.bg_view_grey_oval);
             view_03.setBackgroundResource(R.drawable.bg_view_grey_oval);
