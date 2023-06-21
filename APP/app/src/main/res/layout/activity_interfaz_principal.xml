@@ -9,6 +9,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/Tabla"
+        android:onClick="Listener"
         android:layout_width="364dp"
         android:layout_height="540dp"
         android:layout_marginStart="1dp"
@@ -52,6 +53,7 @@
         android:layout_marginStart="13dp"
         android:layout_marginBottom="26dp"
         android:scaleType="fitXY"
+        android:onClick="Listener"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.676"

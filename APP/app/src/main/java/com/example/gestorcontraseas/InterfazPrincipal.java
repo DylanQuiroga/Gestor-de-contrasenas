@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class InterfazPrincipal extends AppCompatActivity {
     ImageButton BotonBuscar, BotonAgregar;
@@ -29,13 +30,13 @@ public class InterfazPrincipal extends AppCompatActivity {
     public void Listener(View view){
         try{
             if(view.getId() == BotonAgregar.getId()){
+                finish();
                 Intent intent = new Intent(this, AgregarCuenta.class);
                 startActivity(intent);
-                finish();
             }
             else if(view.getId() == BotonBuscar.getId()){
                 if(Busqueda.getText()==null){
-                    //Avisar error
+                    Toast.makeText(getApplicationContext(),"Debe especificar busqueda", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     //Se busca
@@ -43,7 +44,9 @@ public class InterfazPrincipal extends AppCompatActivity {
                 }
 
             }
-            //else if revisar datos de tabla
+            else if(view.getId() == Tabla.getId()){
+                //Se muestran datos en nueva actividad
+            }
 
         }
         catch(Exception e){
