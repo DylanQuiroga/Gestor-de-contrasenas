@@ -26,26 +26,27 @@
         app:layout_constraintVertical_bias="0.735" />
 
     <EditText
-        android:id="@+id/BotonBusqueda"
+        android:id="@+id/BarraBusqueda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="17dp"
         android:layout_marginEnd="178dp"
         android:layout_marginBottom="24dp"
         android:backgroundTint="@color/white"
         android:ems="10"
+        android:hint="Buscar Cuenta"
         android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintBottom_toTopOf="@+id/Tabla"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.028" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/BotonBusqueda"
         android:layout_width="58dp"
         android:layout_height="52dp"
         android:layout_marginStart="13dp"
@@ -60,10 +61,11 @@
         app:srcCompat="@drawable/BotonBusqueda" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/Agregar"
         android:layout_width="59dp"
         android:layout_height="50dp"
         android:scaleType="fitXY"
+        android:onClick="Listener"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.9"
