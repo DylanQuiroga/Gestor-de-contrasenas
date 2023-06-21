@@ -145,7 +145,7 @@ public class PinLogin extends AppCompatActivity implements View.OnClickListener 
 
     private void matchPassCode(){
         if(getPassCode().equals(passCode)){
-            startActivity(new Intent(this,MainActivity.class));
+            startActivity(new Intent(this,pruebaactivity.class));
         }else{
             Toast.makeText(this,"Pin incorrecto, vuelva a intentarlo", Toast.LENGTH_SHORT).show();
         }
