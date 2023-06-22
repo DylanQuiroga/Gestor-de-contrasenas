@@ -14,13 +14,14 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class PinLogin extends AppCompatActivity implements View.OnClickListener {
+public class PinCrear extends AppCompatActivity implements View.OnClickListener {
 
     View view_01,view_02,view_03,view_04;
     Button btn_01,btn_02,btn_03,btn_04,btn_05,btn_06,btn_07,btn_08,btn_09,btn_00,btn_clear;
     ArrayList<String> numbers_list = new ArrayList<>();
     String passCode = "";
     String num_01,num_02,num_03,num_04;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,6 +113,7 @@ public class PinLogin extends AppCompatActivity implements View.OnClickListener 
     }
 
     private void passNumber(ArrayList<String> numbers_list) {
+
         PinDB pinDB = new PinDB(this);
         SQLiteDatabase db = pinDB.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -139,17 +141,16 @@ public class PinLogin extends AppCompatActivity implements View.OnClickListener 
                     num_04 = numbers_list.get(3);
                     view_04.setBackgroundResource(R.drawable.bg_view_blue_oval);
                     passCode = num_01 + num_02 + num_03 + num_04;
-
-                    boolean coincide = pinDB.verificarPin(passCode);
-
-                    if(coincide){
-                        Toast.makeText(this,"Correcto", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(this,"Inorrecto", Toast.LENGTH_SHORT).show();
-                    }
+                    values.put("Pin",passCode);
+                    db.insert("my_table", null, values);
+                    login();
                     break;
             }
         }
     }
 
+    public void login() {
+        Intent intent = new Intent(this, PinLogin.class);
+        startActivity(intent);
+    }
 }
