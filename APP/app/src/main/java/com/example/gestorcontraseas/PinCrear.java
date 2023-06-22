@@ -158,6 +158,7 @@ public class PinCrear extends AppCompatActivity implements View.OnClickListener 
                             values.put("Pin",passCode);
                             db.insert("my_table", null, values);
                             Toast.makeText(this,"Pin correcto", Toast.LENGTH_SHORT).show();
+                            finish();
                             login();
                         }else {
                             numbers_list.clear();

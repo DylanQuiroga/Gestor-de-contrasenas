@@ -22,8 +22,10 @@ public class MainActivity extends AppCompatActivity {
         boolean comprobar = pinDB.noHayValores();
 
         if (comprobar){
+            finish();
             crear();
         }else {
+            finish();
             login();
         }
 
