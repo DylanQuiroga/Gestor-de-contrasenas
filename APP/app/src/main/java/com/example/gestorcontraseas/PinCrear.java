@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -20,7 +21,9 @@ public class PinCrear extends AppCompatActivity implements View.OnClickListener 
     Button btn_01,btn_02,btn_03,btn_04,btn_05,btn_06,btn_07,btn_08,btn_09,btn_00,btn_clear;
     ArrayList<String> numbers_list = new ArrayList<>();
     String passCode = "";
+    String comprobarPassCode = "";
     String num_01,num_02,num_03,num_04;
+    int i = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +61,6 @@ public class PinCrear extends AppCompatActivity implements View.OnClickListener 
         btn_09.setOnClickListener(this);
         btn_00.setOnClickListener(this);
         btn_clear.setOnClickListener(this);
-
 
     }
 
@@ -141,9 +143,33 @@ public class PinCrear extends AppCompatActivity implements View.OnClickListener 
                     num_04 = numbers_list.get(3);
                     view_04.setBackgroundResource(R.drawable.bg_view_blue_oval);
                     passCode = num_01 + num_02 + num_03 + num_04;
-                    values.put("Pin",passCode);
-                    db.insert("my_table", null, values);
-                    login();
+                    i++;
+                    if (i == 1){
+                        comprobarPassCode = passCode;
+                        numbers_list.clear();
+                        view_01.setBackgroundResource(R.drawable.bg_view_grey_oval);
+                        view_02.setBackgroundResource(R.drawable.bg_view_grey_oval);
+                        view_03.setBackgroundResource(R.drawable.bg_view_grey_oval);
+                        view_04.setBackgroundResource(R.drawable.bg_view_grey_oval);
+                        passCode = null;
+                        Toast.makeText(this,"Vuelve a ingresar el pin", Toast.LENGTH_SHORT).show();
+                    }else if (i >= 2){
+                        if(comprobarPassCode.equals(passCode)){
+                            values.put("Pin",passCode);
+                            db.insert("my_table", null, values);
+                            Toast.makeText(this,"Pin correcto", Toast.LENGTH_SHORT).show();
+                            login();
+                        }else {
+                            numbers_list.clear();
+                            view_01.setBackgroundResource(R.drawable.bg_view_grey_oval);
+                            view_02.setBackgroundResource(R.drawable.bg_view_grey_oval);
+                            view_03.setBackgroundResource(R.drawable.bg_view_grey_oval);
+                            view_04.setBackgroundResource(R.drawable.bg_view_grey_oval);
+                            passCode = null;
+                            Toast.makeText(this,"El pin ingresado no coincide", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
                     break;
             }
         }

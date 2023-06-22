@@ -145,6 +145,11 @@ public class PinLogin extends AppCompatActivity implements View.OnClickListener 
                     if(coincide){
                         Toast.makeText(this,"Correcto", Toast.LENGTH_SHORT).show();
                     } else {
+                        numbers_list.clear();
+                        view_01.setBackgroundResource(R.drawable.bg_view_grey_oval);
+                        view_02.setBackgroundResource(R.drawable.bg_view_grey_oval);
+                        view_03.setBackgroundResource(R.drawable.bg_view_grey_oval);
+                        view_04.setBackgroundResource(R.drawable.bg_view_grey_oval);
                         Toast.makeText(this,"Inorrecto", Toast.LENGTH_SHORT).show();
                     }
                     break;
