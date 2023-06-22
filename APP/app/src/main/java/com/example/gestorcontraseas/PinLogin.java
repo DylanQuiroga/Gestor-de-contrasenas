@@ -123,15 +123,15 @@ public class PinLogin extends AppCompatActivity implements View.OnClickListener 
                     break;
                 case 2:
                     num_02 = numbers_list.get(1);
-                    view_01.setBackgroundResource(R.drawable.bg_view_blue_oval);
+                    view_02.setBackgroundResource(R.drawable.bg_view_blue_oval);
                     break;
                 case 3:
                     num_03 = numbers_list.get(2);
-                    view_01.setBackgroundResource(R.drawable.bg_view_blue_oval);
+                    view_03.setBackgroundResource(R.drawable.bg_view_blue_oval);
                     break;
                 case 4:
                     num_04 = numbers_list.get(3);
-                    view_01.setBackgroundResource(R.drawable.bg_view_blue_oval);
+                    view_04.setBackgroundResource(R.drawable.bg_view_blue_oval);
                     passCode = num_01 + num_02 + num_03 + num_04;
                     if(getPassCode().length() == 0){
                         savePassCode(passCode);
