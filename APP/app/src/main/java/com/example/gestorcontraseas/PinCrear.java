@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -23,12 +24,15 @@ public class PinCrear extends AppCompatActivity implements View.OnClickListener 
     String passCode = "";
     String comprobarPassCode = "";
     String num_01,num_02,num_03,num_04;
+
+    TextView textView6;
+    ImageView imageView5;
     int i = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pin_login);
+        setContentView(R.layout.activity_pin_crear);
         initializeComponents();
     }
 
@@ -61,6 +65,9 @@ public class PinCrear extends AppCompatActivity implements View.OnClickListener 
         btn_09.setOnClickListener(this);
         btn_00.setOnClickListener(this);
         btn_clear.setOnClickListener(this);
+
+        textView6 = findViewById(R.id.textView6);
+        imageView5 = findViewById(R.id.imageView5);
 
     }
 
