@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,21 +17,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button boton = findViewById(R.id.boton);
-        MyDatabaseHelper dbHelper = new MyDatabaseHelper(this);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
+        PinDB pinDB = new PinDB(this);
 
-        boton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                test(view);
-            }
-        });
+        boolean comprobar = pinDB.noHayValores();
+
+        if (comprobar){
+            finish();
+            crear();
+        }else {
+            finish();
+            login();
+        }
+
     }
 
-    public void test(View view) {
-        Intent intent = new Intent(this, AgregarCuenta.class);
+    public void login() {
+        Intent intent = new Intent(this, PinLogin.class);
         startActivity(intent);
     }
+
+    public void crear() {
+        Intent intent = new Intent(this, PinCrear.class);
+        startActivity(intent);
+    }
+
 }

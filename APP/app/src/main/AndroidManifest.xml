@@ -12,6 +12,18 @@
         android:theme="@style/Theme.GestorContraseñas"
         tools:targetApi="31">
         <activity
+            android:name=".PinCrear"
+            android:exported="false" />
+        <activity
+            android:name=".pruebaactivity"
+            android:exported="false" />
+        <activity
+            android:name=".PinLogin"
+            android:exported="false" />
+        <activity
+            android:name=".login"
+            android:exported="false" />
+        <activity
             android:name=".AgregarCuenta"
             android:exported="false" />
         <activity
