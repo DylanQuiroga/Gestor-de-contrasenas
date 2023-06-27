@@ -20,7 +20,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     }
 
     public void onCreate(SQLiteDatabase db) {
-        String createTable = "CREATE TABLE my_table (id INTEGER PRIMARY KEY AUTOINCREMENT, tipoCuenta int, sitio TEXT, correo TEXT, contra TEXT, nombreUsuario TEXT, rut TEXT, celular TEXT, telefonoFijo TEXT, nombres TEXT, apellidos TEXT, correoSecundario TEXT, direccion TEXT, otro1 TEXT, otro2 TEXT, otro3 TEXT)";
+        String createTable = "CREATE TABLE my_table (id INTEGER PRIMARY KEY AUTOINCREMENT, tipoCuenta TEXT, sitio TEXT, correo TEXT, contra TEXT, rut TEXT, celular TEXT, telefonoFijo TEXT, nombres TEXT, apellidos TEXT, correoSecundario TEXT, direccion TEXT, otro1 TEXT, otro2 TEXT, otro3 TEXT, codigo TEXT)";
         db.execSQL(createTable);
     }
 
