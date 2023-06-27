@@ -52,7 +52,7 @@ public class InterfazPrincipal extends AppCompatActivity {
     private void consultarListaDatos() {
         SQLiteDatabase db = conn.getReadableDatabase();
         Datos dato = null;
-        Cursor cursor = db.rawQuery("SELECT * FROM mydatabase", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM my_table", null);
 
         while(cursor.moveToNext()){
             dato.setTipoCuenta(cursor.getString(0));

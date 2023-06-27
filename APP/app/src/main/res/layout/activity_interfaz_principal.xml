@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/Fondo"
+    android:background="@drawable/fondo"
     tools:context=".InterfazPrincipal">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -28,8 +28,8 @@
 
     <EditText
         android:id="@+id/BarraBusqueda"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="199dp"
+        android:layout_height="48dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="178dp"
         android:layout_marginBottom="24dp"
@@ -52,29 +52,29 @@
         android:layout_height="52dp"
         android:layout_marginStart="13dp"
         android:layout_marginBottom="26dp"
-        android:scaleType="fitXY"
         android:onClick="Listener"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.676"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.017"
-        app:srcCompat="@drawable/BotonBusqueda" />
+        app:srcCompat="@drawable/botonbusqueda" />
 
     <ImageButton
         android:id="@+id/Agregar"
         android:layout_width="59dp"
         android:layout_height="50dp"
-        android:scaleType="fitXY"
         android:onClick="Listener"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.019"
-        app:srcCompat="@drawable/BotonAgregar" />
+        app:srcCompat="@drawable/botonagregar" />
 
     <Button
         android:id="@+id/Volver"
@@ -83,13 +83,12 @@
         android:layout_marginStart="161dp"
         android:layout_marginTop="17dp"
         android:layout_marginEnd="160dp"
-        android:text="Volver"
         android:onClick="Listener"
+        android:text="Volver"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.973"
-        />
+        app:layout_constraintVertical_bias="0.973" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
