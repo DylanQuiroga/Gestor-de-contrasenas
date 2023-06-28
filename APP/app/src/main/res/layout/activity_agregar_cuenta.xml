@@ -78,7 +78,7 @@
                         android:layout_weight="0.6"
                         android:gravity="center_vertical"
                         android:paddingLeft="10dp"
-                        android:text="Sitio web"
+                        android:text="Sitio web *"
                         android:textColor="@color/blackColor" />
 
                     <EditText

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -64,7 +65,7 @@ public class AgregarCuenta extends AppCompatActivity {
                 String otro2 = otro2ET.getText().toString();
                 String otro3 = otro3ET.getText().toString();
 
-                if(correo.isEmpty() || tipoCuenta.isEmpty() || contra.isEmpty()){
+                if(correo.isEmpty() || tipoCuenta.isEmpty() || contra.isEmpty() || sitio.isEmpty()){
                     builder1.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -82,6 +83,8 @@ public class AgregarCuenta extends AppCompatActivity {
                             ingresarDatosALaDB(tipoCuenta, sitio, correo, contra, rut, celular, telefonoFijo, nombres, apellidos, correoSecundario, direccion, otro1, otro2, otro3);
                             Snackbar mySnackbar = Snackbar.make(view, "Cuenta ingresada correctamente", 3000);
                             mySnackbar.show();
+                            finish();
+                            menu();
                         }
                     });
 
@@ -137,12 +140,11 @@ public class AgregarCuenta extends AppCompatActivity {
             System.out.println(record);
         }
 
-        /*String st0 = PasswordEncryption.decrypt("xEr93JAll71TVEa3Kfewgw==");
-        HuffmanNode root = Huffman.buildHuffmanTree(Huffman.getFrequencies(st0));
-        String st2 = Huffman.decode("01010111001110011100", root);
+    }
 
-        System.out.println(st0);
-        System.out.println(st2);*/
+    public void menu() {
+        Intent intent = new Intent(this, InterfazPrincipal.class);
+        startActivity(intent);
     }
 
 }
