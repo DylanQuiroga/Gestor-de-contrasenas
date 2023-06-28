@@ -74,21 +74,24 @@ public class InterfazPrincipal extends AppCompatActivity {
                 @SuppressLint("Range") String otro3 = cursor.getString(cursor.getColumnIndex("otro3"));
                 @SuppressLint("Range") String codigo = cursor.getString(cursor.getColumnIndex("codigo"));
 
-                dato.setTipoCuenta(tipoCuenta);
-                dato.setSitio(sitio);
-                dato.setCorreo(correo);
-                dato.setContra(contra);
-                dato.setRut(rut);
-                dato.setCelular(celular);
-                dato.setTelefonoFijo(telefonoFijo);
-                dato.setNombres(nombres);
-                dato.setApellidos(apellidos);
-                dato.setCorreoSecundario(correoSecundario);
-                dato.setDireccion(direccion);
-                dato.setOtro1(otro1);
-                dato.setOtro2(otro2);
-                dato.setOtro3(otro3);
-                dato.setCodigo(codigo);
+                dato = new Datos(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9), cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13), cursor.getString(14));
+                /*
+                dato.setTipoCuenta(cursor.getString(0));
+                dato.setSitio(cursor.getString(1));
+                dato.setCorreo(cursor.getString(2));
+                dato.setContra(cursor.getString(3));
+                dato.setRut(cursor.getString(4));
+                dato.setCelular(cursor.getString(5));
+                dato.setTelefonoFijo(cursor.getString(6));
+                dato.setNombres(cursor.getString(7));
+                dato.setApellidos(cursor.getString(8));
+                dato.setCorreoSecundario(cursor.getString(9));
+                dato.setDireccion(cursor.getString(10));
+                dato.setOtro1(cursor.getString(11));
+                dato.setOtro2(cursor.getString(12));
+                dato.setOtro3(cursor.getString(13));
+                dato.setCodigo(cursor.getString(14));
+                */
                 listaDatos.add(dato);
 
             } while (cursor.moveToNext());
