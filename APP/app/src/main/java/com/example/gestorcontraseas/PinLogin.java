@@ -143,18 +143,24 @@ public class PinLogin extends AppCompatActivity implements View.OnClickListener 
                     boolean coincide = pinDB.verificarPin(passCode);
 
                     if(coincide){
-                        Toast.makeText(this,"Correcto", Toast.LENGTH_SHORT).show();
+                        finish();
+                        entrar();
                     } else {
                         numbers_list.clear();
                         view_01.setBackgroundResource(R.drawable.bg_view_grey_oval);
                         view_02.setBackgroundResource(R.drawable.bg_view_grey_oval);
                         view_03.setBackgroundResource(R.drawable.bg_view_grey_oval);
                         view_04.setBackgroundResource(R.drawable.bg_view_grey_oval);
-                        Toast.makeText(this,"Inorrecto", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this,"El Pin es incorrecto", Toast.LENGTH_SHORT).show();
                     }
                     break;
             }
         }
+    }
+
+    public void entrar() {
+        Intent intent = new Intent(this, InterfazPrincipal.class);
+        startActivity(intent);
     }
 
 }
