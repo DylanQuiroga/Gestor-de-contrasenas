@@ -162,7 +162,8 @@ public class PinCrear extends AppCompatActivity implements View.OnClickListener 
                         Toast.makeText(this,"Vuelve a ingresar el pin", Toast.LENGTH_SHORT).show();
                     }else if (i >= 2){
                         if(comprobarPassCode.equals(passCode)){
-                            values.put("Pin",passCode);
+                            String pinEncrypted = PasswordEncryption.encrypt(passCode);
+                            values.put("Pin",pinEncrypted);
                             db.insert("my_table", null, values);
                             Toast.makeText(this,"Pin correcto", Toast.LENGTH_SHORT).show();
                             finish();
