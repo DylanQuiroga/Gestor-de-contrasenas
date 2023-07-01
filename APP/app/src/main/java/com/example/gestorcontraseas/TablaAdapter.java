@@ -28,8 +28,9 @@ public class TablaAdapter extends RecyclerView.Adapter<TablaAdapter.ViewHolderDa
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderDatos holder, int position) {
-       holder.ApartadoCorreo.setText(ListaDatos.get(position).getCorreo());
-       holder.ApartadoSitio.setText(ListaDatos.get(position).getSitio());
+       holder.ApartadoCorreo.setText(ListaDatos.get(position).getContra());
+       holder.ApartadoSitio.setText(ListaDatos.get(position).getCorreo());
+       holder.ApartadoContra.setText(ListaDatos.get(position).getRut());
     }
 
     @Override
@@ -38,12 +39,13 @@ public class TablaAdapter extends RecyclerView.Adapter<TablaAdapter.ViewHolderDa
     }
 
     public class ViewHolderDatos extends RecyclerView.ViewHolder {
-        TextView ApartadoSitio, ApartadoCorreo;
+        TextView ApartadoSitio, ApartadoCorreo, ApartadoContra;
 
         public ViewHolderDatos(@NonNull View itemView) {
             super(itemView);
             ApartadoSitio = itemView.findViewById(R.id.IdSitio);
             ApartadoCorreo = itemView.findViewById(R.id.IdCorreo);
+            ApartadoContra = itemView.findViewById(R.id.idContra);
         }
 
     }

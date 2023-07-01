@@ -7,25 +7,6 @@
     android:background="@drawable/fondo"
     tools:context=".InterfazPrincipal">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/Tabla"
-        android:layout_width="373dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
-        android:background="#FFFFFF"
-        android:backgroundTint="#FFFFFF"
-        android:onClick="Listener"
-        android:scrollbars="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.416"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.196" />
-
     <EditText
         android:id="@+id/BarraBusqueda"
         android:layout_width="199dp"
@@ -90,5 +71,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.973" />
+
+    <LinearLayout
+        android:layout_width="410dp"
+        android:layout_height="469dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/Tabla"
+            android:layout_width="409dp"
+            android:layout_height="469dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="1dp"
+            android:background="#FFFFFF"
+            android:backgroundTint="#FFFFFF"
+            android:onClick="Listener"
+            android:scrollbars="vertical" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

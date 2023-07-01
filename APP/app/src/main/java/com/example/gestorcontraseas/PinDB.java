@@ -47,7 +47,7 @@ public class PinDB extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery(
                 "SELECT * FROM my_table WHERE Pin=?",
-                new String[]{pin}
+                new String[]{PasswordEncryption.encrypt(pin)}
         );
 
         boolean coincide = false;
