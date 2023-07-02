@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -40,6 +41,8 @@ public class AgregarCuenta extends AppCompatActivity {
         EditText otro3ET = findViewById(R.id.otro3);
 
         Button agregar = findViewById(R.id.agregar);
+
+        ImageView imagen = findViewById(R.id.imagengranaje);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("ALERTA").setMessage("Hay algunos cuadros sin información. ¿Desea continuar?");
@@ -107,6 +110,13 @@ public class AgregarCuenta extends AppCompatActivity {
             }
         });
 
+        imagen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                genContra();
+            }
+        });
+
     }
 
     private void ingresarDatosALaDB(String tipoCuenta, String sitio, String correo, String contra, String rut, String celular, String telefonoFijo, String nombres, String apellidos, String correoSecundario, String direccion, String otro1, String otro2, String otro3){
@@ -144,6 +154,11 @@ public class AgregarCuenta extends AppCompatActivity {
 
     public void menu() {
         Intent intent = new Intent(this, InterfazPrincipal.class);
+        startActivity(intent);
+    }
+
+    public void genContra() {
+        Intent intent = new Intent(this, GenContra.class);
         startActivity(intent);
     }
 
