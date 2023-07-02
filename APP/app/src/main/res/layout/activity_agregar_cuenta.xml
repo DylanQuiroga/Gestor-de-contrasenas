@@ -155,7 +155,7 @@
                         android:id="@+id/contrasena"
                         android:layout_width="0dp"
                         android:layout_height="50dp"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="40dp"
                         android:layout_weight="1.4"
                         android:background="@color/editTextBack"
                         android:hint="Çøŋ!ťřā#§èñå_$ĕģúřá"
@@ -164,6 +164,13 @@
                         android:paddingLeft="10dp"
                         android:singleLine="true"
                         android:textColor="@color/blackColor" />
+
+                    <ImageView
+                        android:id="@+id/imagengranaje"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:srcCompat="@mipmap/engranaje_foreground" />
                 </LinearLayout>
                 <!-- create a Linear Layout with horizontal orientation and weightSum property -->
 
