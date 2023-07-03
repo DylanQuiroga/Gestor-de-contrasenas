@@ -3,6 +3,7 @@ package com.example.gestorcontraseas;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -25,7 +27,6 @@ public class ModificarDatos extends AppCompatActivity {
 
         Intent intent = getIntent();
         dato = (Datos) intent.getSerializableExtra("clave");
-        int indice = (int) intent.getIntExtra("posicion",0);
 
         EditText tipoCuentaET = findViewById(R.id.tipoCuenta);
         if(dato.getTipoCuenta() == null){
@@ -136,7 +137,7 @@ public class ModificarDatos extends AppCompatActivity {
                     builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            //ActualizarDatosenLaDB(tipoCuenta, sitio, correo, contra, rut, celular, telefonoFijo, nombres, apellidos, correoSecundario, direccion, otro1, otro2, otro3);
+                            ActualizarDatosenLaDB(dato.getID(), tipoCuenta, sitio, correo, contra, rut, celular, telefonoFijo, nombres, apellidos, correoSecundario, direccion, otro1, otro2, otro3);
                             Snackbar mySnackbar = Snackbar.make(view, "Cuenta guardada correctamente", 3000);
                             mySnackbar.show();
                             finish();
@@ -155,11 +156,12 @@ public class ModificarDatos extends AppCompatActivity {
                     dialog.show();
 
                 }else {
-                    //ActualizarDatosenLaDB(tipoCuenta, sitio, correo, contra, rut, celular, telefonoFijo, nombres, apellidos, correoSecundario, direccion, otro1, otro2, otro3);
+                    ActualizarDatosenLaDB(dato.getID(), tipoCuenta, sitio, correo, contra, rut, celular, telefonoFijo, nombres, apellidos, correoSecundario, direccion, otro1, otro2, otro3);
                     Snackbar mySnackbar = Snackbar.make(view, "Cuenta ingresada correctamente", 3000);
                     mySnackbar.show();
+                    finish();
+                    menu();
                 }
-
             }
         });
 
@@ -173,20 +175,52 @@ public class ModificarDatos extends AppCompatActivity {
         BotonEliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EliminarDato(indice);
+                EliminarDato();
                 finish();
                 menu();
             }
         });
     }
 
-    private void EliminarDato(int i){
+    private void ActualizarDatosenLaDB(String ID, String tipoCuenta, String sitio, String correo, String contra, String rut, String celular, String telefonoFijo, String nombres, String apellidos, String correoSecundario, String direccion, String otro1, String otro2, String otro3){
         MyDatabaseHelper conn;
         conn = new MyDatabaseHelper(this);
         SQLiteDatabase db = conn.getWritableDatabase();
-        String parametros = Integer.toString(i);
+        ContentValues values = new ContentValues();
+
+        String code = PasswordEncryption.encrypt(contra);
+        String contraHuffman = Huffman.encode(contra);
+
+        values.put("TipoCuenta", tipoCuenta);
+        values.put("sitio", sitio);
+        values.put("correo", correo);
+        values.put("contra", contraHuffman);
+        values.put("rut", rut);
+        values.put("celular", celular);
+        values.put("telefonoFijo", telefonoFijo);
+        values.put("nombres", nombres);
+        values.put("apellidos", apellidos);
+        values.put("correoSecundario", correoSecundario);
+        values.put("direccion", direccion);
+        values.put("otro1",otro1);
+        values.put("otro2",otro2);
+        values.put("otro3",otro3);
+        values.put("codigo", code);
+
+        db.update("my_table", values, "id =?", new String[]{ID});
+        conn.close();
+        db.close();
+        Toast.makeText(getApplicationContext(),"Se ha actualizado cuenta", Toast.LENGTH_SHORT).show();
+
+    }
+    private void EliminarDato(){
+        MyDatabaseHelper conn;
+        conn = new MyDatabaseHelper(this);
+        SQLiteDatabase db = conn.getWritableDatabase();
         db.delete("my_table", "id =?", new String[]{dato.getID()});
         conn.close();
+        db.close();
+        Toast.makeText(getApplicationContext(),"Se ha eliminado cuenta", Toast.LENGTH_SHORT).show();
     }
 
 

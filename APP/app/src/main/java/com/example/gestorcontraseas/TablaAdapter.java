@@ -42,7 +42,6 @@ public class TablaAdapter extends RecyclerView.Adapter<TablaAdapter.ViewHolderDa
 
                Intent intent = new Intent(contexto, ModificarDatos.class);
                intent.putExtra("clave",  dato);
-               intent.putExtra("posicion", holder.getAbsoluteAdapterPosition());
                contexto.startActivity(intent);
            }
        });
