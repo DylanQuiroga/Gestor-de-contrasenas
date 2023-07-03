@@ -31,7 +31,7 @@ public class GenContra extends AppCompatActivity {
         CheckBox mayusculas = findViewById(R.id.checkBox);
         CheckBox minusculas = findViewById(R.id.checkBox2);
         CheckBox numeros = findViewById(R.id.checkBox3);
-        CheckBox simbolos = findViewById(R.id.checkBox3);
+        CheckBox simbolos = findViewById(R.id.checkBox4);
 
         EditText tamano = findViewById(R.id.editTextPhone);
         EditText textoFinal = findViewById(R.id.textoFinal);
