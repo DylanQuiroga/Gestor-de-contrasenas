@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -44,8 +45,11 @@ public class InterfazPrincipal extends AppCompatActivity {
         Tabla = findViewById(R.id.Tabla);
         Tabla.setLayoutManager(new LinearLayoutManager(this));
         consultarListaDatos();
-        TablaAdapter adapter = new TablaAdapter(listaDatos);
+        Context context = this;
+        TablaAdapter adapter = new TablaAdapter(listaDatos, context);
         Tabla.setAdapter(adapter);
+        //cerrar conexion DB
+        conn.close();
         //Reiniciar Tabla
         BotonVolver = findViewById(R.id.Volver);
     }
@@ -71,7 +75,8 @@ public class InterfazPrincipal extends AppCompatActivity {
                                  cursor.getString(11),
                                  cursor.getString(12),
                                  cursor.getString(13),
-                                 cursor.getString(14));
+                                 cursor.getString(14),
+                                 cursor.getString(15));
                 listaDatos.add(dato);
 
             } while (cursor.moveToNext());

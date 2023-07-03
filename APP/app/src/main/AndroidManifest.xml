@@ -12,6 +12,9 @@
         android:theme="@style/Theme.GestorContraseñas"
         tools:targetApi="31">
         <activity
+            android:name=".ModificarDatos"
+            android:exported="false" />
+        <activity
             android:name=".GenContra"
             android:exported="false" />
         <activity
