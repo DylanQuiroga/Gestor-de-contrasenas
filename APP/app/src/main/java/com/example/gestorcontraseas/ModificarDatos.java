@@ -40,7 +40,7 @@ public class ModificarDatos extends AppCompatActivity {
         correoET.setText(dato.getCorreo());
 
         EditText contraET = findViewById(R.id.contrasena);
-        contraET.setText(dato.getContra());
+        contraET.setText(PasswordEncryption.decrypt(dato.getContra()));
 
         EditText rutET = findViewById(R.id.rut);
         if(dato.getRut() != null){
