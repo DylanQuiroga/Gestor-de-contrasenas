@@ -29,9 +29,7 @@ public class ModificarDatos extends AppCompatActivity {
         dato = (Datos) intent.getSerializableExtra("clave");
 
         EditText tipoCuentaET = findViewById(R.id.tipoCuenta);
-        if(dato.getTipoCuenta() == null){
-            tipoCuentaET.setText(dato.getTipoCuenta());
-        }
+        tipoCuentaET.setText(dato.getTipoCuenta());
 
         EditText sitioET = findViewById(R.id.sitioWeb);
         sitioET.setText(dato.getSitio());
