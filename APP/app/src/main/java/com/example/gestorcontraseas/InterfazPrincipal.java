@@ -24,8 +24,9 @@ public class InterfazPrincipal extends AppCompatActivity {
     TextView Busqueda;
     RecyclerView Tabla;
     //Para la tabla
+    TablaAdapter adapter;
     ArrayList<Datos> listaDatos;
-
+    ArrayList<Datos> ListaOriginal = new ArrayList<>();
     MyDatabaseHelper conn;
 
     @Override
@@ -45,13 +46,15 @@ public class InterfazPrincipal extends AppCompatActivity {
         Tabla = findViewById(R.id.Tabla);
         Tabla.setLayoutManager(new LinearLayoutManager(this));
         consultarListaDatos();
+        ListaOriginal.addAll(listaDatos);
         Context context = this;
-        TablaAdapter adapter = new TablaAdapter(listaDatos, context);
+        adapter = new TablaAdapter(listaDatos, context);
         Tabla.setAdapter(adapter);
         //cerrar conexion DB
         conn.close();
         //Reiniciar Tabla
         BotonVolver = findViewById(R.id.Volver);
+        BotonVolver.setEnabled(false);
     }
 
     private void consultarListaDatos() {
@@ -81,6 +84,7 @@ public class InterfazPrincipal extends AppCompatActivity {
 
             } while (cursor.moveToNext());
         }
+
     }
 
     public void Listener(View view){
@@ -91,20 +95,30 @@ public class InterfazPrincipal extends AppCompatActivity {
                 startActivity(intent);
             }
             else if(view.getId() == BotonBuscar.getId()){
-                if(Busqueda.getText()==null){
+                String aux = Busqueda.getText().toString();
+
+                if(aux.isEmpty()){
                     Toast.makeText(getApplicationContext(),"Debe especificar busqueda", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    //Se busca
+                    Buscar(Busqueda.getText().toString());
                     Busqueda.setText(null);
+                    BotonBuscar.setEnabled(false);
+                    BotonVolver.setEnabled(true);
                 }
             }
             else if(view.getId() == BotonVolver.getId()){
-                //reiniciarTabla
+                adapter.Reinicio(ListaOriginal);
+                BotonVolver.setEnabled(false);
+                BotonBuscar.setEnabled(true);
             }
         }
         catch(Exception e){
             System.out.println("Error");
         }
+    }
+
+    public void Buscar(String s){
+        adapter.filtrado(s);
     }
 }

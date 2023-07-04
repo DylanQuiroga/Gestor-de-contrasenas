@@ -23,6 +23,7 @@ public class PinDB extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS mytable");
         onCreate(db);
+        db.close();
     }
 
     public boolean existeTabla(String nombreTabla) {
@@ -39,7 +40,7 @@ public class PinDB extends SQLiteOpenHelper {
             }
             cursor.close();
         }
-
+        db.close();
         return existe;
     }
 
@@ -58,7 +59,7 @@ public class PinDB extends SQLiteOpenHelper {
             }
             cursor.close();
         }
-
+        db.close();
         return coincide;
     }
 
@@ -79,7 +80,7 @@ public class PinDB extends SQLiteOpenHelper {
             }
             cursor.close();
         }
-
+        db.close();
         return noHayValores;
     }
 

@@ -2,6 +2,7 @@ package com.example.gestorcontraseas;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class TablaAdapter extends RecyclerView.Adapter<TablaAdapter.ViewHolderDatos> {
 
@@ -46,6 +49,30 @@ public class TablaAdapter extends RecyclerView.Adapter<TablaAdapter.ViewHolderDa
            }
        });
     }
+
+    public void filtrado(String busqueda){
+        if(android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+            List<Datos> collection = ListaDatos.stream().filter(i -> i.getSitio().toLowerCase().contains(busqueda.toLowerCase())).collect(Collectors.toList());
+            ListaDatos.clear();
+            ListaDatos.addAll(collection);
+
+        }
+        else{
+            for(Datos c: ListaDatos){
+                if(c.getSitio().toLowerCase().contains(busqueda.toLowerCase())){
+                    ListaDatos.add(c);
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
+
+    public void Reinicio(ArrayList<Datos> ListaOriginal){
+        ListaDatos.clear();
+        ListaDatos.addAll(ListaOriginal);
+        notifyDataSetChanged();
+    }
+
 
     @Override
     public int getItemCount() {

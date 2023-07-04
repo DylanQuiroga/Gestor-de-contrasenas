@@ -65,7 +65,7 @@
         android:layout_marginTop="17dp"
         android:layout_marginEnd="160dp"
         android:onClick="Listener"
-        android:text="Volver"
+        android:text="Reiniciar tabla"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
