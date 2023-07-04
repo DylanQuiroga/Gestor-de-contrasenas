@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -23,8 +24,9 @@ public class InterfazPrincipal extends AppCompatActivity {
     TextView Busqueda;
     RecyclerView Tabla;
     //Para la tabla
+    TablaAdapter adapter;
     ArrayList<Datos> listaDatos;
-
+    ArrayList<Datos> ListaOriginal = new ArrayList<>();
     MyDatabaseHelper conn;
 
     @Override
@@ -44,10 +46,15 @@ public class InterfazPrincipal extends AppCompatActivity {
         Tabla = findViewById(R.id.Tabla);
         Tabla.setLayoutManager(new LinearLayoutManager(this));
         consultarListaDatos();
-        TablaAdapter adapter = new TablaAdapter(listaDatos);
+        ListaOriginal.addAll(listaDatos);
+        Context context = this;
+        adapter = new TablaAdapter(listaDatos, context);
         Tabla.setAdapter(adapter);
+        //cerrar conexion DB
+        conn.close();
         //Reiniciar Tabla
         BotonVolver = findViewById(R.id.Volver);
+        BotonVolver.setEnabled(false);
     }
 
     private void consultarListaDatos() {
@@ -57,25 +64,27 @@ public class InterfazPrincipal extends AppCompatActivity {
 
         if (cursor.moveToFirst()) {
             do {
-                dato = new Datos(cursor.getString(0),
-                                 cursor.getString(1),
-                                 cursor.getString(2),
-                                 cursor.getString(3),
-                                 cursor.getString(4),
-                                 cursor.getString(5),
-                                 cursor.getString(6),
-                                 cursor.getString(7),
-                                 cursor.getString(8),
-                                 cursor.getString(9),
-                                 cursor.getString(10),
-                                 cursor.getString(11),
-                                 cursor.getString(12),
-                                 cursor.getString(13),
-                                 cursor.getString(14));
+                dato = new Datos(cursor.getString(0), //id
+                                 cursor.getString(1), //Tipo de cuenta
+                                 cursor.getString(2), //Sitio
+                                 cursor.getString(3),//Correo
+                                 cursor.getString(4),//Contrasena
+                                 cursor.getString(5),//rut
+                                 cursor.getString(6),//celular
+                                 cursor.getString(7),//telefono Fijo
+                                 cursor.getString(8),//Nombres
+                                 cursor.getString(9),//Apellidos
+                                 cursor.getString(10),//CorreoSecundario
+                                 cursor.getString(11),//Direccion
+                                 cursor.getString(12),//otro1
+                                 cursor.getString(13),//otro2
+                                 cursor.getString(14),//otro3
+                                 cursor.getString(15));//Codigo para desencriptar
                 listaDatos.add(dato);
 
             } while (cursor.moveToNext());
         }
+
     }
 
     public void Listener(View view){
@@ -86,20 +95,30 @@ public class InterfazPrincipal extends AppCompatActivity {
                 startActivity(intent);
             }
             else if(view.getId() == BotonBuscar.getId()){
-                if(Busqueda.getText()==null){
+                String aux = Busqueda.getText().toString();
+
+                if(aux.isEmpty()){
                     Toast.makeText(getApplicationContext(),"Debe especificar busqueda", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    //Se busca
+                    Buscar(Busqueda.getText().toString());
                     Busqueda.setText(null);
+                    BotonBuscar.setEnabled(false);
+                    BotonVolver.setEnabled(true);
                 }
             }
             else if(view.getId() == BotonVolver.getId()){
-                //reiniciarTabla
+                adapter.Reinicio(ListaOriginal);
+                BotonVolver.setEnabled(false);
+                BotonBuscar.setEnabled(true);
             }
         }
         catch(Exception e){
             System.out.println("Error");
         }
+    }
+
+    public void Buscar(String s){
+        adapter.filtrado(s);
     }
 }

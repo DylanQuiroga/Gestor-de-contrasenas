@@ -1,9 +1,12 @@
 package com.example.gestorcontraseas;
 
-public class Datos {
-    private String tipoCuenta ,sitio ,correo ,contra ,rut ,celular ,telefonoFijo ,nombres ,apellidos ,correoSecundario ,direccion ,otro1 ,otro2 ,otro3, codigo;
+import java.io.Serializable;
 
-    public Datos(String tipoCuenta , String sitio , String correo , String contra , String rut , String celular , String telefonoFijo , String nombres , String apellidos , String correoSecundario , String direccion , String otro1 , String otro2 , String otro3, String codigo){
+public class Datos implements Serializable {
+    private String ID, tipoCuenta ,sitio ,correo ,contra ,rut ,celular ,telefonoFijo ,nombres ,apellidos ,correoSecundario ,direccion ,otro1 ,otro2 ,otro3, codigo;
+
+    public Datos(String ID, String tipoCuenta , String sitio , String correo , String contra , String rut , String celular , String telefonoFijo , String nombres , String apellidos , String correoSecundario , String direccion , String otro1 , String otro2 , String otro3, String codigo){
+        this.ID = ID;
         this.tipoCuenta = tipoCuenta;
         this.sitio = sitio;
         this.correo = correo;
@@ -22,6 +25,7 @@ public class Datos {
     }
 
     //getters
+    public String getID(){ return ID; }
     public String getTipoCuenta() {
         return tipoCuenta;
     }
@@ -82,6 +86,7 @@ public class Datos {
             return codigo;
     }
     //setters
+    public void setID(String ID){ this.ID = ID; }
     public void setTipoCuenta(String tipoCuenta) {
         this.tipoCuenta = tipoCuenta;
     }

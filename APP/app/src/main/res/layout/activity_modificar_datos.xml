@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ModificarDatos">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/whiteColor"
+        android:orientation="vertical"
+
+        tools:context=".AgregarCuenta">
+        <!-- vertical ScrollView to make all the items or views scrollable -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+            <!-- LinearLayout Inside ScrollView -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <!-- create a Linear Layout with horizontal orientation and weightSum property -->
+
+                <LinearLayout
+                    android:id="@+id/firstLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- place one TextView and one EditText inside layout using weight property -->
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="0.6"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:text="Tipo de cuenta *"
+                        android:textColor="@color/blackColor" />
+
+                    <EditText
+                        android:id="@+id/tipoCuenta"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1.4"
+                        android:background="@color/editTextBack"
+                        android:hint="Banco, red social, videojuego, etc"
+                        android:imeOptions="actionNext"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true"
+                        android:textColor="@color/blackColor" />
+                </LinearLayout>
+                <!-- create a Linear Layout with horizontal orientation and weightSum property -->
+
+                <LinearLayout
+                    android:id="@+id/secondLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- place one TextView and one EditText inside layout using weight property -->
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="0.6"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:text="Sitio web *"
+                        android:textColor="@color/blackColor" />
+
+                    <EditText
+                        android:id="@+id/sitioWeb"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1.4"
+                        android:background="@color/editTextBack"
+                        android:hint="www.ejemplo.com"
+                        android:imeOptions="actionNext"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true"
+                        android:textColor="@color/blackColor" />
+                </LinearLayout>
+                <!-- create a Linear Layout with horizontal orientation and weightSum property -->
+
+                <LinearLayout
+                    android:id="@+id/thirdLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- place one TextView and one EditText inside layout using weight property -->
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="0.6"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:text="Correo electronico *"
+                        android:textColor="@color/blackColor" />
+
+                    <EditText
+                        android:id="@+id/correoElectronico"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1.4"
+                        android:background="@color/editTextBack"
+                        android:hint="micorreo.electronico@idk.com"
+                        android:imeOptions="actionNext"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true"
+                        android:textColor="@color/blackColor" />
+                </LinearLayout>
+                <!-- create a Linear Layout with horizontal orientation and weightSum property -->
+
+                <LinearLayout
+                    android:id="@+id/fourthLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- place one TextView and one EditText inside layout using weight property -->
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="0.6"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:text="Contraseña *"
+                        android:textColor="@color/blackColor" />
+
+                    <EditText
+                        android:id="@+id/contrasena"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_weight="1.4"
+                        android:background="@color/editTextBack"
+                        android:hint="Çøŋ!ťřā#§èñå_$ĕģúřá"
+                        android:imeOptions="actionNext"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true"
+                        android:textColor="@color/blackColor" />
+
+                    <ImageView
+                        android:id="@+id/imagengranaje"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:srcCompat="@mipmap/engranaje_foreground" />
+                </LinearLayout>
+                <!-- create a Linear Layout with horizontal orientation and weightSum property -->
+
+                <LinearLayout
+                    android:id="@+id/fifthLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- place one TextView and one EditText inside layout using weight property -->
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="0.6"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:text="Rut"
+                        android:textColor="@color/blackColor" />
+
+                    <EditText
+                        android:id="@+id/rut"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1.4"
+                        android:background="@color/editTextBack"
+                        android:hint="12.345.678-9"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true"
+                        android:textColor="@color/blackColor" />
+                </LinearLayout>
+                <!-- create a Linear Layout with horizontal orientation and weightSum property -->
+
+                <LinearLayout
+                    android:id="@+id/sixthLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- place one TextView and one EditText inside layout using weight property -->
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="0.6"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:text="Celular"
+                        android:textColor="@color/blackColor" />
+
+                    <EditText
+                        android:id="@+id/celular"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1.4"
+                        android:background="@color/editTextBack"
+                        android:hint="9 1234 5678"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true"
+                        android:textColor="@color/blackColor" />
+                </LinearLayout>
+                <!-- create a Linear Layout with horizontal orientation and weightSum property -->
+
+                <LinearLayout
+                    android:id="@+id/seventhLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- place one TextView and one EditText inside layout using weight property -->
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="0.6"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:text="Telefono fijo"
+                        android:textColor="@color/blackColor" />
+
+                    <EditText
+                        android:id="@+id/telefonoFijo"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1.4"
+                        android:background="@color/editTextBack"
+                        android:hint="1 234 567 89"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true"
+                        android:textColor="@color/blackColor" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/eightLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- place one TextView and one EditText inside layout using weight property -->
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="0.6"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:text="Nombres"
+                        android:textColor="@color/blackColor" />
+
+                    <EditText
+                        android:id="@+id/nombres"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1.4"
+                        android:background="@color/editTextBack"
+                        android:hint="Esteban Daniel"
+                        android:imeOptions="actionNext"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true"
+                        android:textColor="@color/blackColor" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/nineLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- place one TextView and one EditText inside layout using weight property -->
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="0.6"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:text="Apellidos"
+                        android:textColor="@color/blackColor" />
+
+                    <EditText
+                        android:id="@+id/apellidos"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1.4"
+                        android:background="@color/editTextBack"
+                        android:hint="Rojas Alfaro"
+                        android:imeOptions="actionNext"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true"
+                        android:textColor="@color/blackColor" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tenLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- place one TextView and one EditText inside layout using weight property -->
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="0.6"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:text="Correo secundario"
+                        android:textColor="@color/blackColor" />
+
+                    <EditText
+                        android:id="@+id/correoSecundario"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1.4"
+                        android:background="@color/editTextBack"
+                        android:hint="miotro.correo@idk.com"
+                        android:imeOptions="actionNext"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true"
+                        android:textColor="@color/blackColor" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/elevenLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- place one TextView and one EditText inside layout using weight property -->
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="0.6"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:text="Dirección"
+                        android:textColor="@color/blackColor" />
+
+                    <EditText
+                        android:id="@+id/direccion"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1.4"
+                        android:background="@color/editTextBack"
+                        android:hint="Calle Mirador 1234"
+                        android:imeOptions="actionNext"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true"
+                        android:textColor="@color/blackColor" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/twelveLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- place one TextView and one EditText inside layout using weight property -->
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="0.6"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:text="Dato adicional 1"
+                        android:textColor="@color/blackColor" />
+
+                    <EditText
+                        android:id="@+id/otro1"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1.4"
+                        android:background="@color/editTextBack"
+                        android:hint="Color favorito"
+                        android:imeOptions="actionNext"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true"
+                        android:textColor="@color/blackColor" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/thirteenLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- place one TextView and one EditText inside layout using weight property -->
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="0.6"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:text="Dato adicional 2"
+                        android:textColor="@color/blackColor" />
+
+                    <EditText
+                        android:id="@+id/otro2"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1.4"
+                        android:background="@color/editTextBack"
+                        android:hint="Mi primera mascota"
+                        android:imeOptions="actionNext"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true"
+                        android:textColor="@color/blackColor" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/FourteenLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- place one TextView and one EditText inside layout using weight property -->
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="0.6"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:text="Dato adicional 3"
+                        android:textColor="@color/blackColor" />
+
+                    <EditText
+                        android:id="@+id/otro3"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1.4"
+                        android:background="@color/editTextBack"
+                        android:hint="Ciudad de nacimiento"
+                        android:imeOptions="actionNext"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true"
+                        android:textColor="@color/blackColor" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/FifteenLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- place one TextView and one EditText inside layout using weight property -->
+
+                    <TextView
+                        android:layout_width="252dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="0.6"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:text="* estos datos son obligatorios"
+                        android:textColor="@color/redColor" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/Editar"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@color/greenColor"
+                    android:text="Guardar Cambios"
+                    android:textColor="@color/whiteColor" />
+
+                <Button
+                    android:id="@+id/Eliminar"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@color/redColor"
+                    android:text="Eliminar cuenta"
+                    android:textColor="@color/whiteColor" />
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

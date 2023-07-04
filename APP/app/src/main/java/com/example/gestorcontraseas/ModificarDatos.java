@@ -12,35 +12,88 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
-import java.util.List;
+public class ModificarDatos extends AppCompatActivity {
 
-public class AgregarCuenta extends AppCompatActivity {
+    Datos dato;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_agregar_cuenta);
+        setContentView(R.layout.activity_modificar_datos);
+
+        Intent intent = getIntent();
+        dato = (Datos) intent.getSerializableExtra("clave");
 
         EditText tipoCuentaET = findViewById(R.id.tipoCuenta);
-        EditText sitioET = findViewById(R.id.sitioWeb);
-        EditText correoET = findViewById(R.id.correoElectronico);
-        EditText contraET = findViewById(R.id.contrasena);
-        EditText rutET = findViewById(R.id.rut);
-        EditText celularET = findViewById(R.id.celular);
-        EditText telefonoFijoET = findViewById(R.id.telefonoFijo);
-        EditText nombresET = findViewById(R.id.nombres);
-        EditText apellidosET = findViewById(R.id.apellidos);
-        EditText correoSecundarioET = findViewById(R.id.correoSecundario);
-        EditText direccionET = findViewById(R.id.direccion);
-        EditText otro1ET = findViewById(R.id.otro1);
-        EditText otro2ET = findViewById(R.id.otro2);
-        EditText otro3ET = findViewById(R.id.otro3);
+        tipoCuentaET.setText(dato.getTipoCuenta());
 
-        Button agregar = findViewById(R.id.agregar);
+        EditText sitioET = findViewById(R.id.sitioWeb);
+        sitioET.setText(dato.getSitio());
+
+
+        EditText correoET = findViewById(R.id.correoElectronico);
+        correoET.setText(dato.getCorreo());
+
+        EditText contraET = findViewById(R.id.contrasena);
+
+        contraET.setText(PasswordEncryption.decrypt(dato.getCodigo()));
+
+        EditText rutET = findViewById(R.id.rut);
+        if(dato.getRut() != null){
+            rutET.setText(dato.getRut());
+        }
+
+        EditText celularET = findViewById(R.id.celular);
+        if(dato.getCelular() != null){
+            celularET.setText(dato.getCelular());
+        }
+
+        EditText telefonoFijoET = findViewById(R.id.telefonoFijo);
+        if(dato.getTelefonoFijo() != null){
+            telefonoFijoET.setText(dato.getTelefonoFijo());
+        }
+
+        EditText nombresET = findViewById(R.id.nombres);
+        if(dato.getNombres() != null){
+            nombresET.setText(dato.getNombres());
+        }
+
+        EditText apellidosET = findViewById(R.id.apellidos);
+        if(dato.getApellidos() != null){
+            apellidosET.setText(dato.getApellidos());
+        }
+
+        EditText correoSecundarioET = findViewById(R.id.correoSecundario);
+        if(dato.getCorreoSecundario() != null){
+            correoSecundarioET.setText(dato.getCorreoSecundario());
+        }
+
+        EditText direccionET = findViewById(R.id.direccion);
+        if(dato.getDireccion() != null){
+            direccionET.setText(dato.getDireccion());
+        }
+
+        EditText otro1ET = findViewById(R.id.otro1);
+        if(dato.getOtro1() != null){
+            otro1ET.setText(dato.getOtro1());
+        }
+
+        EditText otro2ET = findViewById(R.id.otro2);
+        if(dato.getOtro2() != null){
+            otro2ET.setText(dato.getOtro2());
+        }
+
+        EditText otro3ET = findViewById(R.id.otro3);
+        if(dato.getOtro3() != null){
+            otro3ET.setText(dato.getOtro3());
+        }
+
+        Button BotonEditar = findViewById(R.id.Editar);
+        Button BotonEliminar = findViewById(R.id.Eliminar);
 
         ImageView imagen = findViewById(R.id.imagengranaje);
 
@@ -50,7 +103,7 @@ public class AgregarCuenta extends AppCompatActivity {
         AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
         builder1.setTitle("ALERTA").setMessage("Rellena por lo menos los campos importantes");
 
-        agregar.setOnClickListener(new View.OnClickListener() {
+        BotonEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String tipoCuenta = tipoCuentaET.getText().toString();
@@ -83,8 +136,8 @@ public class AgregarCuenta extends AppCompatActivity {
                     builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            ingresarDatosALaDB(tipoCuenta, sitio, correo, contra, rut, celular, telefonoFijo, nombres, apellidos, correoSecundario, direccion, otro1, otro2, otro3);
-                            Snackbar mySnackbar = Snackbar.make(view, "Cuenta ingresada correctamente", 3000);
+                            ActualizarDatosenLaDB(dato.getID(), tipoCuenta, sitio, correo, contra, rut, celular, telefonoFijo, nombres, apellidos, correoSecundario, direccion, otro1, otro2, otro3);
+                            Snackbar mySnackbar = Snackbar.make(view, "Cuenta guardada correctamente", 3000);
                             mySnackbar.show();
                             finish();
                             menu();
@@ -102,13 +155,12 @@ public class AgregarCuenta extends AppCompatActivity {
                     dialog.show();
 
                 }else {
-                    ingresarDatosALaDB(tipoCuenta, sitio, correo, contra, rut, celular, telefonoFijo, nombres, apellidos, correoSecundario, direccion, otro1, otro2, otro3);
+                    ActualizarDatosenLaDB(dato.getID(), tipoCuenta, sitio, correo, contra, rut, celular, telefonoFijo, nombres, apellidos, correoSecundario, direccion, otro1, otro2, otro3);
                     Snackbar mySnackbar = Snackbar.make(view, "Cuenta ingresada correctamente", 3000);
                     mySnackbar.show();
                     finish();
                     menu();
                 }
-
             }
         });
 
@@ -119,11 +171,20 @@ public class AgregarCuenta extends AppCompatActivity {
             }
         });
 
+        BotonEliminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EliminarDato();
+                finish();
+                menu();
+            }
+        });
     }
 
-    private void ingresarDatosALaDB(String tipoCuenta, String sitio, String correo, String contra, String rut, String celular, String telefonoFijo, String nombres, String apellidos, String correoSecundario, String direccion, String otro1, String otro2, String otro3){
-        MyDatabaseHelper dbHelper = new MyDatabaseHelper(this);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+    private void ActualizarDatosenLaDB(String ID, String tipoCuenta, String sitio, String correo, String contra, String rut, String celular, String telefonoFijo, String nombres, String apellidos, String correoSecundario, String direccion, String otro1, String otro2, String otro3){
+        MyDatabaseHelper conn;
+        conn = new MyDatabaseHelper(this);
+        SQLiteDatabase db = conn.getWritableDatabase();
         ContentValues values = new ContentValues();
 
         String code = PasswordEncryption.encrypt(contra);
@@ -144,15 +205,23 @@ public class AgregarCuenta extends AppCompatActivity {
         values.put("otro2",otro2);
         values.put("otro3",otro3);
         values.put("codigo", code);
-        db.insert("my_table", null, values);
 
-        List<String> records = dbHelper.getAllRecords();
+        db.update("my_table", values, "id =?", new String[]{ID});
+        conn.close();
+        db.close();
+        Toast.makeText(getApplicationContext(),"Se ha actualizado cuenta", Toast.LENGTH_SHORT).show();
 
-        for(String record : records){
-            System.out.println(record);
-        }
-        dbHelper.close();
     }
+    private void EliminarDato(){
+        MyDatabaseHelper conn;
+        conn = new MyDatabaseHelper(this);
+        SQLiteDatabase db = conn.getWritableDatabase();
+        db.delete("my_table", "id =?", new String[]{dato.getID()});
+        conn.close();
+        db.close();
+        Toast.makeText(getApplicationContext(),"Se ha eliminado cuenta", Toast.LENGTH_SHORT).show();
+    }
+
 
     public void menu() {
         Intent intent = new Intent(this, InterfazPrincipal.class);
