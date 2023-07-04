@@ -108,13 +108,14 @@ public class InterfazPrincipal extends AppCompatActivity {
                     Busqueda.setText(null);
                     BotonBuscar.setEnabled(false);
                     BotonVolver.setEnabled(true);
-
+                    Busqueda.setEnabled(false);
                 }
             }
             else if(view.getId() == BotonVolver.getId()){
                 adapter.Reinicio(ListaOriginal);
                 BotonVolver.setEnabled(false);
                 BotonBuscar.setEnabled(true);
+                Busqueda.setEnabled(true);
             }
         }
         catch(Exception e){
