@@ -130,6 +130,7 @@ public class InterfazPrincipal extends AppCompatActivity {
                 .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         finish();
+                        inicio();
                     }
                 })
                 .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -138,6 +139,11 @@ public class InterfazPrincipal extends AppCompatActivity {
                     }
                 });
         builder.show();
+    }
+
+    public void inicio(){
+        Intent intent = new Intent(this, PinLogin.class);
+        startActivity(intent);
     }
 
     public void Buscar(String s){
